@@ -32,7 +32,7 @@ exports.resizeImageHandler = async (event, context) => {
       Key: objectKey,
       ContentType: 'image/jpeg',
       Body: resizedImage,
-      ACL: 'public-read'
+      //ACL: 'public-read'
     }).promise();
 
     // Publish the image URL to SNS
