@@ -1,0 +1,39 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: >
+  serverless-photo-resizer - Resize images uploaded to S3 and notify via SNS
+
+Transform:
+  - AWS::Serverless-2016-10-31
+
+Resources:
+  ResizeImageFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/handlers/resize-image.resizeImageHandler
+      Runtime: nodejs18.x
+      Architectures:
+        - x86_64
+      MemorySize: 256
+      Timeout: 100
+      Description: Resizes uploaded images and publishes the public URL to SNS
+      Environment:
+        Variables:
+          destinationBucket: !Ref DestinationBucket
+          topicArn: !Ref ImageSnsTopic
+      Policies:
+        - AWSLambdaBasicExecutionRole
+        - S3ReadPolicy:
+            BucketName: !Ref SourceBucket
+        - S3WritePolicy:
+            BucketName: !Ref DestinationBucket
+        - SNSPublishMessagePolicy:
+            TopicName: !GetAtt ImageSnsTopic.TopicName
+
+  SourceBucket:
+    Type: AWS::S3::Bucket
+
+  DestinationBucket:
+    Type: AWS::S3::Bucket
+
+  ImageSnsTopic:
+    Type: AWS::SNS::Topic

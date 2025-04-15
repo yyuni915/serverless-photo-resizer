@@ -1,0 +1,32 @@
+# Node modules
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# dotenv files
+.env
+# .env.*
+
+# AWS SAM build artifacts
+.aws-sam/
+
+# AWS SAM CLI local install dir
+sam-installation/
+aws-sam-cli/
+
+# Downloaded ZIPs and extracted temp files
+*.zip
+*.tar.gz
+
+# macOS & Linux system files
+.DS_Store
+Thumbs.db
+
+# IDE settings
+.vscode/
+.idea/
+*.swp

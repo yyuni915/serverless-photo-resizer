@@ -1,0 +1,9 @@
+version = 0.1
+[default.deploy.parameters]
+stack_name = "photo-resizer-stack"
+s3_bucket = "photo-resizer-manager" 
+s3_prefix = "photo-resizer-stack"
+region = "ap-southeast-2"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+image_repositories = []
