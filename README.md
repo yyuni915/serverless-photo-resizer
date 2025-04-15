@@ -142,4 +142,12 @@ In future versions, consider using Terraform for better dependency control:
 - Better separation of resource creation and permission setup
 - No need for manual post-deployment steps like S3 triggers
 
+---
 
+### 📸 Email Notification Example
+
+Once a file is uploaded to the source bucket, the Lambda function will process it and trigger an email notification via SNS.
+
+Here’s a real example of the email received:
+
+![Email Screenshot](./assets/email-screenshot.png)
